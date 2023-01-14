@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+  <changeSet id="01_create_t_ilot" author="dazag">
+    <createTable tableName="t_ilot" remarks="Table contenant les informations relatives aux ilots">
+
+      <column name="ilot_id" type="VARCHAR(50)" remarks="Identifiant du technicien">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="pk_t_ilot" />
+      </column>
+
+      <column name="ilot_titre" type="VARCHAR(50)" remarks="Titre de l'ilot">
+        <constraints nullable="false"/>
+      </column>
+
+      <column name="ilot_localisation" type="TEXT" remarks="Localisation de l'ilot">
+        <constraints nullable="false"/>
+      </column>
+
+      <column name="ilot_page_web" type="TEXT" remarks="Page web de l'ilot">
+        <constraints nullable="false"/>
+      </column>
+
+    </createTable>
+  </changeSet>
+</databaseChangeLog>

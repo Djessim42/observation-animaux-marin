@@ -4,5 +4,7 @@
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
+  <include file="changelog/01_create_t_ilot.xml" relativeToChangelogFile="true" />
+  <include file="changelog/02_create_t_fiche_observation.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

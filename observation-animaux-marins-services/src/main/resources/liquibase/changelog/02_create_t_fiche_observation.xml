@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+  <changeSet id="02_create_t_fiche_observation" author="dazag">
+    <createTable tableName="t_fiche_observation" remarks="Table contenant les informations relatives aux fiches d'observations des animaux">
+
+      <column name="fob_id" type="BIGINT" remarks="Identifiant de la fiche d'observation">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="pk_t_fiche_observation"/>
+      </column>
+
+      <column name="fob_ilot_id" type="VARCHAR(50)" remarks="Ilot associé à la fiche d'observation">
+        <constraints nullable="false"/>
+      </column>
+
+      <column name="fob_distance_bord_ilot" type="INTEGER" remarks="Distance du bord de l'ilot en mètres">
+        <constraints nullable="false"/>
+      </column>
+
+      <column name="fob_date_observation" type="TIMESTAMP WITHOUT TIME ZONE" remarks="Date de l'observation" >
+        <constraints nullable="false"/>
+      </column>
+
+      <column name="fob_qualite_identification" type="VARCHAR(50)" remarks="Qualité de l'identification (suspicion, probable, vérifié)">
+        <constraints nullable="false"/>
+      </column>
+
+      <column name="fob_taille_estimee_individu" type="INTEGER" remarks="Taille estimée de l'individu en centimètres"/>
+      <column name="fob_temps_apnee" type="INTEGER" remarks="Temps d'apnée observé"/>
+      <column name="fob_is_individu" type="BOOLEAN" remarks="Vrai si un seul individu, faux si un banc"/>
+      <column name="fob_bn_individu" type="INTEGER" remarks="Nombre d'invididus si banc"/>
+
+    </createTable>
+
+    <addForeignKeyConstraint baseTableName="t_fiche_observation"
+      baseColumnNames="fob_ilot_id"
+      constraintName="fob_ilot_fk"
+      referencedTableName="t_ilot"
+      referencedColumnNames="ilot_id"/>
+  </changeSet>
+</databaseChangeLog>
