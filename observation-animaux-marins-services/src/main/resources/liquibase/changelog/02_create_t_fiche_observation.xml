@@ -11,6 +11,10 @@
         <constraints nullable="false" primaryKey="true" primaryKeyName="pk_t_fiche_observation"/>
       </column>
 
+      <column name="fob_type_animal_marin" type="VARCHAR(50)" remarks="Type d'animal marin observé">
+        <constraints nullable="false"/>
+      </column>
+
       <column name="fob_ilot_id" type="VARCHAR(50)" remarks="Ilot associé à la fiche d'observation">
         <constraints nullable="false"/>
       </column>
@@ -30,7 +34,7 @@
       <column name="fob_taille_estimee_individu" type="INTEGER" remarks="Taille estimée de l'individu en centimètres"/>
       <column name="fob_temps_apnee" type="INTEGER" remarks="Temps d'apnée observé"/>
       <column name="fob_is_individu" type="BOOLEAN" remarks="Vrai si un seul individu, faux si un banc"/>
-      <column name="fob_bn_individu" type="INTEGER" remarks="Nombre d'invididus si banc"/>
+      <column name="fob_nb_estime_individu" type="INTEGER" remarks="Nombre d'invididus si banc"/>
 
     </createTable>
 
@@ -39,5 +43,8 @@
       constraintName="fob_ilot_fk"
       referencedTableName="t_ilot"
       referencedColumnNames="ilot_id"/>
+
+    <createSequence cacheSize="1" cycle="false" incrementBy="1" maxValue="9223372036854775807" minValue="1"
+      sequenceName="s_fiche_observation" startValue="1" />
   </changeSet>
 </databaseChangeLog>

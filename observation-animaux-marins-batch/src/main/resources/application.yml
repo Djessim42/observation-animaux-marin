@@ -2,8 +2,34 @@ spring:
   profiles:
     active: #spring.profiles.active#
   application:
-    name: intervention-batch-envoi-fcer
-  batch:
-    initialize-schema: never
+    name: observation-animaux-marins-batch
   liquibase:
     enabled: false
+  datasource:
+    url: jdbc:h2:file:./data/bdd
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: true
+
+application:
+  batch:
+    chunk: 50
+  ilot:
+    url: https://www.province-sud.nc/pandoreweb/pandore/ilot/IlotDto/?limit={limit}&start={start}&_responseMode=json
+  proxy:
+    use: true
+    host: "vip-users.proxy.edf.fr"
+    port: 3131
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          client:
+            RestTemplate: DEBUG
