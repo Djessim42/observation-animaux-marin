@@ -17,11 +17,13 @@ import nc.observation.animaux.marins.enums.TypeAnimalMarin;
 @AllArgsConstructor
 public class FicheObservationDTO {
 
+    private Long id;
+
     private TypeAnimalMarin animalMarin;
 
     private IlotDTO ilot;
 
-    private Integer distanceBordIlot;
+    private int distanceBordIlot;
 
     private LocalDateTime dateObservation;
 
@@ -29,7 +31,9 @@ public class FicheObservationDTO {
 
     private Integer tailleEstimeIndividu;
 
-    private Integer tempsApnee;
+    private int tempsApnee;
 
     private Boolean isIndividu;
+
+    private Integer estimationNbIndividus;
 }

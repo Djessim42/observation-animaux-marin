@@ -25,11 +25,3 @@ application:
     use: true
     host: "vip-users.proxy.edf.fr"
     port: 3131
-
-logging:
-  level:
-    org:
-      springframework:
-        web:
-          client:
-            RestTemplate: DEBUG

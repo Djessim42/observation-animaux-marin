@@ -3,6 +3,7 @@ package nc.observation.animaux.marins.service.impl;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import nc.observation.animaux.marins.bean.CreateFicheObservation;
 import nc.observation.animaux.marins.entity.FicheObservation;
@@ -14,6 +15,7 @@ import nc.observation.animaux.marins.service.FicheObservationService;
 import nc.observation.animaux.marins.service.IlotService;
 
 @Service
+@Transactional
 public class FicheObservationServiceImpl implements FicheObservationService {
 
     private final IlotService ilotService;
@@ -29,7 +31,7 @@ public class FicheObservationServiceImpl implements FicheObservationService {
 
     @Override
     public List<FicheObservation> getFiches(TypeAnimalMarin animalMarin) {
-        return ficheObservationRepository.findAll(animalMarin);
+        return ficheObservationRepository.findAllByType(animalMarin);
     }
 
     @Override

@@ -13,6 +13,6 @@ import nc.observation.animaux.marins.enums.TypeAnimalMarin;
 @Repository
 public interface FicheObservationRepository extends JpaRepository<FicheObservation, Long> {
 
-    @Query("select f from FicheObservation f inner join f.ilot where :animalMarin is null or f.animalMarin = :animalMarin")
-    List<FicheObservation> findAll(@Param("animalMarin")TypeAnimalMarin typeAnimalMarin);
+    @Query("select f from FicheObservation f inner join f.ilot where :animalMarin is null or f.animalMarin = :animalMarin order by f.dateObservation")
+    List<FicheObservation> findAllByType(@Param("animalMarin")TypeAnimalMarin typeAnimalMarin);
 }

@@ -1,6 +1,7 @@
 package nc.observation.animaux.marins.dto;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -43,5 +44,17 @@ public class CreateFicheObservationDTO {
     @NotNull
     private Boolean isIndividu;
 
-    private Integer estimationNbIndividu;
+    private Integer estimationNbIndividus;
+
+    public boolean isMammifere() {
+        return Optional.ofNullable(animalMarin).map(TypeAnimalMarin::isMammifere).orElse(false);
+    }
+
+    public boolean isIndividuPoisson() {
+        return Optional.ofNullable(animalMarin).map(a -> a.isPoisson() && this.isIndividu).orElse(false);
+    }
+
+    public boolean isBancPoisson() {
+        return Optional.ofNullable(animalMarin).map(a -> a.isPoisson() && !this.isIndividu).orElse(false);
+    }
 }

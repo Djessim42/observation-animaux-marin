@@ -7,7 +7,7 @@
   <changeSet id="02_create_t_fiche_observation" author="dazag">
     <createTable tableName="t_fiche_observation" remarks="Table contenant les informations relatives aux fiches d'observations des animaux">
 
-      <column name="fob_id" type="BIGINT" remarks="Identifiant de la fiche d'observation">
+      <column name="fob_id" autoIncrement="true" type="BIGINT" remarks="Identifiant de la fiche d'observation">
         <constraints nullable="false" primaryKey="true" primaryKeyName="pk_t_fiche_observation"/>
       </column>
 
@@ -31,10 +31,10 @@
         <constraints nullable="false"/>
       </column>
 
-      <column name="fob_taille_estimee_individu" type="INTEGER" remarks="Taille estimée de l'individu en centimètres"/>
+      <column name="fob_taille_estimee_individu" type="INTEGER" remarks="Taille estimée de l'individu en mètres"/>
       <column name="fob_temps_apnee" type="INTEGER" remarks="Temps d'apnée observé"/>
       <column name="fob_is_individu" type="BOOLEAN" remarks="Vrai si un seul individu, faux si un banc"/>
-      <column name="fob_nb_estime_individu" type="INTEGER" remarks="Nombre d'invididus si banc"/>
+      <column name="fob_nb_estime_individus" type="INTEGER" remarks="Nombre d'invididus si banc"/>
 
     </createTable>
 
@@ -43,8 +43,5 @@
       constraintName="fob_ilot_fk"
       referencedTableName="t_ilot"
       referencedColumnNames="ilot_id"/>
-
-    <createSequence cacheSize="1" cycle="false" incrementBy="1" maxValue="9223372036854775807" minValue="1"
-      sequenceName="s_fiche_observation" startValue="1" />
   </changeSet>
 </databaseChangeLog>

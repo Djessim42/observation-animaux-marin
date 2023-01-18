@@ -29,6 +29,7 @@ import nc.observation.animaux.marins.listener.IlotJobExecutionListener;
 public class ImportIlotBatchConfiguration {
 
     @Bean
+    @Qualifier("importIlotJob")
     public Job importIlotJob(JobRepository jobRepository,
         IlotJobExecutionListener listener,
         @Qualifier("importIlotStep") Step importIlotStep) {
@@ -43,7 +44,7 @@ public class ImportIlotBatchConfiguration {
     @Bean
     @Qualifier("importIlotStep")
     public Step importIlotStep(
-        @Value("${application.batch.chunk}") int chunk,
+        @Value("${application.batch.chunk:50}") int chunk,
         JobRepository jobRepository,
         PlatformTransactionManager platformTransactionManager,
         ImportIlotItemReader importIlotItemReader,

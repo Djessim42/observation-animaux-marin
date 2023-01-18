@@ -33,5 +33,5 @@ public class CreateFicheObservation {
 
     private Boolean isIndividu;
 
-    private Integer estimationNbIndividu;
+    private Integer estimationNbIndividus;
 }

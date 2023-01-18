@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum TypeAnimalMarin {
     BALEINE_A_BOSSE(false),
-    DAUPHING_TURSIOPE(false),
+    DAUPHIN_TURSIOPE(false),
     DUGONG(false),
     CACHALOT(false),
     RAIE_MANTA(true),

@@ -3,15 +3,14 @@ package nc.observation.animaux.marins.dto.validation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import nc.observation.animaux.marins.dto.FicheObservationDTO;
+import nc.observation.animaux.marins.dto.CreateFicheObservationDTO;
 
-public class CreateFicheObservationValidator implements ConstraintValidator<CreateFicheObservationConstraint, FicheObservationDTO> {
+public class CreateFicheObservationValidator implements ConstraintValidator<CreateFicheObservationConstraint, CreateFicheObservationDTO> {
 
     @Override
-    public boolean isValid(FicheObservationDTO ficheObservationDTO, ConstraintValidatorContext context) {
+    public boolean isValid(CreateFicheObservationDTO ficheObservationDTO, ConstraintValidatorContext context) {
 
-        // Le temps d'apnée est obligatoire pour les mammifères
-        if (ficheObservationDTO.getAnimalMarin().isMammifere() && ficheObservationDTO.getTempsApnee() == null) {
+        if (ficheObservationDTO.isMammifere() && ficheObservationDTO.getTempsApnee() == null) {
             context.buildConstraintViolationWithTemplate(
                     "Le temps d'apnée est obligatoire pour les mammifères")
                 .addPropertyNode("tempsApnee")
@@ -19,20 +18,19 @@ public class CreateFicheObservationValidator implements ConstraintValidator<Crea
             return false;
         }
 
-        // Le temps d'apnée est obligatoire pour les mammifères
-        if (ficheObservationDTO.getAnimalMarin().isMammifere() && ficheObservationDTO.getTailleEstimeIndividu() == null) {
+        // Pour les individus la taille est doit être renseignée
+        if ((ficheObservationDTO.isMammifere() || ficheObservationDTO.isIndividuPoisson()) && ficheObservationDTO.getTailleEstimeIndividu() == null) {
             context.buildConstraintViolationWithTemplate(
-                    "La taille estimée de l'invidu est obligatoire pour les mammifères")
+                    "La taille estimée de l'invidu est obligatoire")
                 .addPropertyNode("tailleEstimeIndividu")
                 .addConstraintViolation();
             return false;
         }
 
-        // Pour les poissons, il est obligatoire de savoir s'il sagit d'un individu ou d'un banc
-        if (ficheObservationDTO.getAnimalMarin().isPoisson() && ficheObservationDTO.getIsIndividu() == null) {
+        if (ficheObservationDTO.isBancPoisson() && ficheObservationDTO.getEstimationNbIndividus() == null) {
             context.buildConstraintViolationWithTemplate(
-                    "Le champ isIndividu est obligatoire pour les poissons")
-                .addPropertyNode("isIndividu")
+                    "L'estimation du nombre d'individus est obligatoire pour les bancs de poissons")
+                .addPropertyNode("estimationNbIndividus")
                 .addConstraintViolation();
             return false;
         }
