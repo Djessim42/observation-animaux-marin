@@ -4,8 +4,8 @@
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-  <changeSet id="02_create_t_fiche_observation" author="dazag">
-    <createTable tableName="t_fiche_observation" remarks="Table contenant les informations relatives aux fiches d'observations des animaux">
+  <changeSet id="02_create_t_fiche_observation" author="DAG">
+    <createTable tableName="t_fiche_observation" remarks="Table contenant les informations relatives aux fiches d'observations des animaux marins">
 
       <column name="fob_id" autoIncrement="true" type="BIGINT" remarks="Identifiant de la fiche d'observation">
         <constraints nullable="false" primaryKey="true" primaryKeyName="pk_t_fiche_observation"/>
@@ -19,7 +19,7 @@
         <constraints nullable="false"/>
       </column>
 
-      <column name="fob_distance_bord_ilot" type="INTEGER" remarks="Distance du bord de l'ilot en mètres">
+      <column name="fob_distance_bord_ilot" type="INTEGER" remarks="Distance du bord de l'ilot (en mètres)">
         <constraints nullable="false"/>
       </column>
 
@@ -35,7 +35,6 @@
       <column name="fob_temps_apnee" type="INTEGER" remarks="Temps d'apnée observé"/>
       <column name="fob_is_individu" type="BOOLEAN" remarks="Vrai si un seul individu, faux si un banc"/>
       <column name="fob_nb_estime_individus" type="INTEGER" remarks="Nombre d'invididus si banc"/>
-
     </createTable>
 
     <addForeignKeyConstraint baseTableName="t_fiche_observation"

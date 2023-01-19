@@ -162,7 +162,7 @@ public class FicheObservationControllerTest {
             .andExpect(jsonPath("$.dateObservation").value("2023-01-18T07:30:00"))
             .andExpect(jsonPath("$.qualiteIdentification").value("SUSPICION"))
             .andExpect(jsonPath("$.tailleEstimeIndividu").isEmpty())
-            .andExpect(jsonPath("$.tempsApnee").value(60))
+            .andExpect(jsonPath("$.tempsApnee").isEmpty())
             .andExpect(jsonPath("$.isIndividu").value(false))
             .andExpect(jsonPath("$.estimationNbIndividus").value(4))
             .andExpect(jsonPath("$.ilot.id").value("ff80818167a5556c0167a555a31b001b"))

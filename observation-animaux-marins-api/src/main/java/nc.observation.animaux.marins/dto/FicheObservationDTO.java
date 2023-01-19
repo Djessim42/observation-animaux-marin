@@ -23,7 +23,7 @@ public class FicheObservationDTO {
 
     private IlotDTO ilot;
 
-    private int distanceBordIlot;
+    private Integer distanceBordIlot;
 
     private LocalDateTime dateObservation;
 
@@ -31,7 +31,7 @@ public class FicheObservationDTO {
 
     private Integer tailleEstimeIndividu;
 
-    private int tempsApnee;
+    private Integer tempsApnee;
 
     private Boolean isIndividu;
 

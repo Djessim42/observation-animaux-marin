@@ -6,5 +6,4 @@
 
   <include file="changelog/01_create_t_ilot.xml" relativeToChangelogFile="true" />
   <include file="changelog/02_create_t_fiche_observation.xml" relativeToChangelogFile="true" />
-
 </databaseChangeLog>

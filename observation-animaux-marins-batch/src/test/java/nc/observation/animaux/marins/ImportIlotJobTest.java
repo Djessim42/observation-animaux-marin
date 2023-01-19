@@ -64,21 +64,18 @@ public class ImportIlotJobTest {
         assertThat(jobExecution.getExitStatus()).isEqualTo(ExitStatus.COMPLETED);
         assertThat(jobExecution.getStepExecutions()).singleElement().satisfies(stepExecution -> {
             assertThat(stepExecution.getExitStatus()).isEqualTo(ExitStatus.COMPLETED);
+            assertThat(stepExecution.getReadCount()).isEqualTo(5);
+            assertThat(stepExecution.getWriteCount()).isEqualTo(4);
+            assertThat(stepExecution.getFilterCount()).isEqualTo(1); // Erreur de validation
         });
 
         List<Ilot> result = ilotRepository.findAll();
-        assertThat(result).hasSize(5)
+        assertThat(result).hasSize(4)
             .anySatisfy(ilot -> {
                 AssertionsForClassTypes.assertThat(ilot.getTitre()).isEqualTo("Récif Mendigué");
                 AssertionsForClassTypes.assertThat(ilot.getId()).isEqualTo("ff80818167a5556c0167a5559f2c0007");
                 AssertionsForClassTypes.assertThat(ilot.getLocalisation()).isEqualTo("POINT (166.48788888050734 -21.71354567432781)");
                 AssertionsForClassTypes.assertThat(ilot.getPageWeb()).isEqualTo("https://www.province-sud.nc/pandoreweb/app/ilot/Récif-Mendigué");
-            })
-            .anySatisfy(ilot -> {
-                AssertionsForClassTypes.assertThat(ilot.getTitre()).isEqualTo("Récif émergé");
-                AssertionsForClassTypes.assertThat(ilot.getId()).isEqualTo("ff80818167a5556c0167a5559f740009");
-                AssertionsForClassTypes.assertThat(ilot.getLocalisation()).isEqualTo("POINT (165.41177570577474 -21.62263787308672)");
-                AssertionsForClassTypes.assertThat(ilot.getPageWeb()).isEqualTo("https://www.province-sud.nc/pandoreweb/app/ilot/Récif-émergé-bis");
             })
             .anySatisfy(ilot -> {
                 AssertionsForClassTypes.assertThat(ilot.getTitre()).isEqualTo("Îlot Tapoué");

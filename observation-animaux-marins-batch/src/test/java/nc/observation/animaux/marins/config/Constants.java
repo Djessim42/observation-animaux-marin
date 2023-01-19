@@ -25,7 +25,7 @@ public final class Constants {
                     "close": false,
                     "titre": "Récif émergé",
                     "urlPageWeb": "https://www.province-sud.nc/pandoreweb/app/ilot/Récif-émergé-bis",
-                    "localisation": "POINT (165.41177570577474 -21.62263787308672)",
+                    "localisation": null,
                     "photoPrincipale": null
                 },
                 {

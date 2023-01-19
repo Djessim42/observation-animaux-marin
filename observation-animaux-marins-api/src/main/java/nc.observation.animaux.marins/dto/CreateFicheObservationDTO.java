@@ -3,6 +3,8 @@ package nc.observation.animaux.marins.dto;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -22,38 +24,41 @@ import nc.observation.animaux.marins.enums.TypeAnimalMarin;
 @CreateFicheObservationConstraint
 public class CreateFicheObservationDTO {
 
-    @NotEmpty
+    @NotEmpty(message = "Le titre de l'ilot doit être renseigné")
     private String titreIlot;
 
-    @NotNull
+    @NotNull(message = "L'animal marin doit être renseigné")
     private TypeAnimalMarin animalMarin;
 
-    @NotNull
+    @NotNull(message = "La distance du bord de l'ilôt doit être renseignée")
     private Integer distanceBordIlot;
 
-    @NotNull
+    @NotNull(message = "La date d'observation de l'animal doit être renseignée")
     private LocalDateTime dateObservation;
 
-    @NotNull
+    @NotNull(message = "La qualité d'indentification doit être renseignée")
     private QualiteIdentification qualiteIdentification;
+
+    @NotNull(message = "Le champ indiquant s'il s'agit d'un individu ou d'un banc doit être renseigné")
+    private Boolean isIndividu;
 
     private Integer tailleEstimeIndividu;
 
     private Integer tempsApnee;
 
-    @NotNull
-    private Boolean isIndividu;
-
     private Integer estimationNbIndividus;
 
+    @JsonIgnore
     public boolean isMammifere() {
         return Optional.ofNullable(animalMarin).map(TypeAnimalMarin::isMammifere).orElse(false);
     }
 
+    @JsonIgnore
     public boolean isIndividuPoisson() {
         return Optional.ofNullable(animalMarin).map(a -> a.isPoisson() && this.isIndividu).orElse(false);
     }
 
+    @JsonIgnore
     public boolean isBancPoisson() {
         return Optional.ofNullable(animalMarin).map(a -> a.isPoisson() && !this.isIndividu).orElse(false);
     }

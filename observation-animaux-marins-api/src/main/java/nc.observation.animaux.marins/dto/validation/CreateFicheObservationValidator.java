@@ -18,7 +18,6 @@ public class CreateFicheObservationValidator implements ConstraintValidator<Crea
             return false;
         }
 
-        // Pour les individus la taille est doit être renseignée
         if ((ficheObservationDTO.isMammifere() || ficheObservationDTO.isIndividuPoisson()) && ficheObservationDTO.getTailleEstimeIndividu() == null) {
             context.buildConstraintViolationWithTemplate(
                     "La taille estimée de l'invidu est obligatoire")

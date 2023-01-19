@@ -9,7 +9,17 @@ import nc.observation.animaux.marins.enums.TypeAnimalMarin;
 
 public interface FicheObservationService {
 
+    /**
+     * Récupère l'ensemble des fiches d'observations filtrées par animal marin
+     * @param typeAnimalMarin type d'animal sur lequel filtrer
+     * @return une liste de FicheObservation
+     */
     List<FicheObservation> getFiches(TypeAnimalMarin typeAnimalMarin);
 
+    /**
+     * Crée une fiche d'observation à partir des données en paramètre
+     * @param createFicheObservationDTO DTO de création
+     * @return la fiche créée
+     */
     FicheObservation createFicheObservation(CreateFicheObservation createFicheObservationDTO);
 }

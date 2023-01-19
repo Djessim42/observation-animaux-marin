@@ -42,7 +42,7 @@ public class FicheObservation {
     private Ilot ilot;
 
     @Column(name = "fob_distance_bord_ilot", nullable = false)
-    private int distanceBordIlot; // En mètres
+    private Integer distanceBordIlot; // En mètres
 
     @Column(name = "fob_date_observation", nullable = false)
     private LocalDateTime dateObservation;
@@ -51,11 +51,11 @@ public class FicheObservation {
     @Column(name = "fob_qualite_identification", nullable = false)
     private QualiteIdentification qualiteIdentification;
 
-    @Column(name = "fob_temps_apnee")
-    private int tempsApnee; // En secondes
-
     @Column(name = "fob_is_individu", nullable = false)
     private Boolean isIndividu;
+
+    @Column(name = "fob_temps_apnee")
+    private Integer tempsApnee; // En secondes
 
     @Column(name = "fob_taille_estimee_individu")
     private Integer tailleEstimeIndividu; // En mètres

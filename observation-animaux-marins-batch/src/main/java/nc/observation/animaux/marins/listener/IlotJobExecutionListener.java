@@ -22,8 +22,8 @@ public class IlotJobExecutionListener implements JobExecutionListener {
     public void afterJob(JobExecution jobExecution) {
         if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
             LOGGER.info("Job d'import des ilots terminé avec succès");
-        } else {
-            LOGGER.warn("Un souci est survenu lors du d'import des ilots");
+            return;
         }
+        LOGGER.warn("Une erreur est survenue lors de l'import des ilots");
     }
 }

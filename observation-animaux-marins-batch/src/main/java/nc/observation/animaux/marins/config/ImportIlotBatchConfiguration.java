@@ -25,6 +25,9 @@ import nc.observation.animaux.marins.items.ImportIlotItemReader;
 import nc.observation.animaux.marins.items.ImportIlotItemWriter;
 import nc.observation.animaux.marins.listener.IlotJobExecutionListener;
 
+/**
+ * Classe de configuration du job d'import des ilôts
+ */
 @Configuration
 public class ImportIlotBatchConfiguration {
 
